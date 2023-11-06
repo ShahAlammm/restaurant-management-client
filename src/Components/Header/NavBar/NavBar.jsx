@@ -48,7 +48,7 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink
-          to="/addProduct"
+          to="/allItems"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"
@@ -57,7 +57,7 @@ const NavBar = () => {
               : ""
           }
         >
-          Add Product
+          All Food Items
         </NavLink>
       </li>
       <li>
@@ -105,10 +105,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div
-      className="navbar z-[1]"
-
-    >
+    <div className="navbar z-[1]">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -140,8 +137,12 @@ const NavBar = () => {
             src="https://i.ibb.co/th4ZYw5/44b43d-465bd94e983e4048ae17912458c3315c-mv2.webp"
             alt=""
           />
-          <p >
-            <img className="h-24 w-28 hidden md:inline-block" src="https://i.ibb.co/2dnxfs1/SW-LOGO.png" alt="" />
+          <p>
+            <img
+              className="h-24 w-28 inline-block"
+              src="https://i.ibb.co/2dnxfs1/SW-LOGO.png"
+              alt=""
+            />
           </p>
         </div>
       </div>
@@ -151,15 +152,18 @@ const NavBar = () => {
       <div className="navbar-end gap-3">
         <div className="text-3xl">
           {user?.photoURL ? (
-            <details className="dropdown">
-              <summary className="m-1 btn btn-ghost">
+            <div className="dropdown dropdown-hover">
+              <label tabIndex={0} className="btn btn-ghost m-1">
                 <div className="avatar">
                   <div className="w-12 rounded-full">
                     <img src={user?.photoURL} />
                   </div>
                 </div>
-              </summary>
-              <ul className="p-2 mt-2 menu dropdown-content z-[1] font-bold w-52">
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-64"
+              >
                 <li>
                   <p>{user?.displayName}</p>
                 </li>
@@ -167,14 +171,14 @@ const NavBar = () => {
                   <p>{user?.email}</p>
                 </li>
               </ul>
-            </details>
+            </div>
           ) : (
             <details className="dropdown">
               <summary className="m-1 btn btn-ghost text-4xl">
                 <FaUserCircle></FaUserCircle>
               </summary>
               <ul className="p-2 mt-2 menu dropdown-content z-[1] font-bold w-52">
-              <li>
+                <li>
                   <p>{user?.displayName}</p>
                 </li>
                 <li>

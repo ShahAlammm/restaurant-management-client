@@ -1,16 +1,20 @@
 const Footer = () => {
   return (
     <footer className="">
-      <div className="container px-6 py-8 mx-auto">
+      <div className="container px-6 py-8 mx-auto text-lg font-bold">
         <div className="flex flex-col items-center text-center">
           <a href="#">
-            <img className="w-auto h-7" src="" alt="" />
+            <img
+              className="w-auto h-32"
+              src="https://i.ibb.co/th4ZYw5/44b43d-465bd94e983e4048ae17912458c3315c-mv2.webp"
+              alt=""
+            />
           </a>
 
           <div className="flex flex-wrap justify-center mt-6 -mx-4">
             <a
               href="#"
-              className="mx-4 text-sm text-gray-800 transition-colors duration-300 hover:text-blue-500 dark:text-gray-600 dark:hover:text-blue-400"
+              className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 dark:hover:text-blue-400"
               aria-label="Reddit"
             >
               {" "}
@@ -19,7 +23,7 @@ const Footer = () => {
 
             <a
               href="#"
-              className="mx-4 text-sm text-black transition-colors duration-300 hover:text-blue-500 dark:text-gray-600 dark:hover:text-blue-400"
+              className="mx-4 text-sm transition-colors duration-300 hover:text-blue-500  dark:hover:text-blue-400"
               aria-label="Reddit"
             >
               {" "}
@@ -28,7 +32,7 @@ const Footer = () => {
 
             <a
               href="#"
-              className="mx-4 text-sm text-black transition-colors duration-300 hover:text-blue-500 dark:text-gray-600 dark:hover:text-blue-400"
+              className="mx-4 text-sm transition-colors duration-300 hover:text-blue-500  dark:hover:text-blue-400"
               aria-label="Reddit"
             >
               {" "}
@@ -37,7 +41,7 @@ const Footer = () => {
 
             <a
               href="#"
-              className="mx-4 text-sm text-black transition-colors duration-300 hover:text-blue-500 dark:text-gray-600 dark:hover:text-blue-400"
+              className="mx-4 text-sm transition-colors duration-300 hover:text-blue-500  dark:hover:text-blue-400"
               aria-label="Reddit"
             >
               {" "}
@@ -46,7 +50,7 @@ const Footer = () => {
 
             <a
               href="#"
-              className="mx-4 text-sm text-black transition-colors duration-300 hover:text-blue-500 dark:text-gray-600 dark:hover:text-blue-400"
+              className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500  dark:hover:text-blue-400"
               aria-label="Reddit"
             >
               {" "}
@@ -55,17 +59,17 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr className="my-6 border-gray-200 md:my-10 dark:border-black" />
+        <hr className="my-6 md:my-10" />
 
         <div className="flex flex-col items-center sm:flex-row sm:justify-between">
-          <p className="text-sm text-black dark:text-gray-300">
-            © Copyright 2021. All Rights Reserved.
+          <p className="text-sm ">
+            © Copyright 2023. All Rights Reserved.
           </p>
 
           <div className="flex -mx-2">
             <a
               href="#"
-              className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+              className="mx-2 transition-colors duration-300  hover:text-blue-500 dark:hover:text-blue-400"
               aria-label="Reddit"
             >
               <svg
@@ -80,7 +84,7 @@ const Footer = () => {
 
             <a
               href="#"
-              className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+              className="mx-2  transition-colors duration-300  hover:text-blue-500 dark:hover:text-blue-400"
               aria-label="Facebook"
             >
               <svg
@@ -95,7 +99,7 @@ const Footer = () => {
 
             <a
               href="#"
-              className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+              className="mx-2  transition-colors duration-300  hover:text-blue-500 dark:hover:text-blue-400"
               aria-label="Github"
             >
               <svg

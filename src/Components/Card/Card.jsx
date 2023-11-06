@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Card = ({ item }) => {
-  const { id, FoodName, FoodImage, FoodCategory } = item || {};
+  const { id, FoodName, FoodImage, FoodCategory, Price } = item || {};
   return (
     <div>
       <div
@@ -26,8 +26,11 @@ const Card = ({ item }) => {
 
             <div className="mt-32 sm:mt-48 lg:mt-64">
               <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-80">
+                <div className="font-serif text-lg italic font-bold">
                 <h3 className="text-white mb-2 font-serif">{FoodCategory}</h3>
-                <Link to={`/item/${id}`}>
+                <h3 className="text-white mb-2 font-serif">Price: <span className="text-pink-500">{Price}$</span></h3>
+                </div>
+                <Link to={`/details/${id}`}>
                   <button className="btn bg-gradient-to-r from-orange-500 to-amber-500 hover:bg-purple-400 shadow-lg shadow-blue-600/50 text-white">
                     Details
                   </button>

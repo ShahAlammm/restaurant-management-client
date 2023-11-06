@@ -6,6 +6,7 @@ import Cooker from "../../Components/Cooker/Cooker";
 import Review from "../../Components/Review/Review";
 import PublicReview from "../../Components/Review/PublicReview";
 import Team from "../../Components/Team/Team";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [foodItems, setFoodItems] = useState([]);
@@ -20,9 +21,9 @@ const Home = () => {
       <div className="container m-auto">
         <div className="text-center mt-28 space-y-8">
           <h2 className="text-3xl font-serif italic font-semibold text-orange-400 ">
-            Corporate Applications
+            Enjoy To Test
           </h2>
-          <h1 className="text-7xl font-bold">Our Services</h1>
+          <h1 className="text-7xl font-bold italic">Our Famous Recipes</h1>
           <p className="text-lg italic">
             Assertively myocardinate robust e-tailers for extensible human
             capital. <br /> dpropriately benchmark networks.
@@ -33,10 +34,10 @@ const Home = () => {
             <Card key={item.id} item={item}></Card>
           ))}
         </div>
-        <div className="mt-10 flex justify-end items-end ">
-          <button className="btn bg-orange-500 w-28 text-white">
-            view more
-          </button>
+        <div className="mt-10 flex justify-center items-center ">
+          <Link to='/allItems'><button className="btn bg-orange-500 hover:bg-blue-500 text-white">
+            See all
+          </button></Link>
         </div>
         <div className="mt-10">
           <Cooker></Cooker>
