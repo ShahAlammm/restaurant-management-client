@@ -6,6 +6,9 @@ import SignUp from "../Components/SignUp/SignUp";
 import AllFoodItems from "../Pages/AllFoodItems/AllFoodItems";
 import Details from "../Pages/Details/Details";
 import NewPage from "../Pages/NewPage/NewPage";
+import MyFood from "../Pages/Users/MyFood";
+import AddFood from "../Pages/Users/AddFood";
+import MyOrder from "../Pages/Users/MyOrder";
 
 const Router = createBrowserRouter([
   {
@@ -33,6 +36,18 @@ const Router = createBrowserRouter([
         {
           path:"newPage",
           element:<NewPage></NewPage>
+        },
+        {
+          path:"myFood",
+          element:<MyFood></MyFood>
+        },
+        {
+          path:"addFood",
+          element:<AddFood></AddFood>
+        },
+        {
+          path:"myOrder",
+          element:<MyOrder></MyOrder>
         }
     ],
   },

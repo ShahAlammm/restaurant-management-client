@@ -7,7 +7,7 @@ const SearchBar = ({ onSearch }) => {
   };
   return (
     <div className="flex justify-end">
-      <div className="form-control">
+      <form className="form-control">
         <div className="input-group">
           <input
             type="text"
@@ -15,7 +15,7 @@ const SearchBar = ({ onSearch }) => {
             onChange={handleChange}
             className="input input-bordered lg:w-96"
           />
-          <button  className="btn btn-square w-28 bg-orange-500">
+          <button className="btn btn-square w-28 bg-orange-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -32,7 +32,7 @@ const SearchBar = ({ onSearch }) => {
             </svg>
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

@@ -12,19 +12,22 @@ const AllFoodItems = () => {
     axios.get(`http://localhost:7000/foods`).then((res) => {
       setFoodItem(res.data);
     });
-    
   }, []);
 
   const filteredFoodItems = foodItem.filter((food) =>
     food.FoodName.toLowerCase().includes(searchItem.toLowerCase())
   );
 
-  const handlePageChange = (newPage) => {
-    setPage(newPage);
-  };
+  // const filteredFoodItems = foodItem.filter(
+  //   (food) => food.FoodName.toLowerCase() === searchItem.toLowerCase()
+  // );
 
   const handleSearch = (Item) => {
     setSearchItem(Item);
+  };
+
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
   };
 
   return (

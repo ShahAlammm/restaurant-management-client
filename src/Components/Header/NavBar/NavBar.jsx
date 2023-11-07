@@ -149,7 +149,8 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-bold">{navLink}</ul>
       </div>
-      <div className="navbar-end gap-3">
+      <div className="navbar-end">
+        <p className="hidden sm:inline-block">{user?.email}</p>
         <div className="text-3xl">
           {user?.photoURL ? (
             <div className="dropdown dropdown-hover">
@@ -162,13 +163,16 @@ const NavBar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-64"
+                className="dropdown-content z-[1] text-orange-500 menu p-2 shadow bg-base-100 rounded-box w-56"
               >
                 <li>
-                  <p>{user?.displayName}</p>
+                  <Link to="myFood"> My Added Food Items</Link>
                 </li>
                 <li>
-                  <p>{user?.email}</p>
+                  <Link to="addFood">Add a Food Item</Link>
+                </li>
+                <li>
+                  <Link to="myOrder">My Ordered Food Items</Link>
                 </li>
               </ul>
             </div>
