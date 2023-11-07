@@ -40,7 +40,7 @@ const AddFood = () => {
   };
 
   return (
-    <div className="bg-base-200 p-24 lg:p-64  font-bold font-serif ">
+    <div className="bg-base-200 p-24 lg:px-40  font-bold font-serif ">
       <h2 className="text-3xl font-extrabold text-orange-500 text-center">
         Add A Food Item
       </h2>
