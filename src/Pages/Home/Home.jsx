@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const [foodItems, setFoodItems] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:7000/items").then((res) => {
+    axios.get("http://localhost:7000/foods").then((res) => {
       setFoodItems(res.data);
     });
   }, []);
@@ -30,8 +30,8 @@ const Home = () => {
           </p>
         </div>
         <div className="grid md:grid-cols-2 xl:grid-cols-3">
-          {foodItems?.map((item) => (
-            <Card key={item.id} item={item}></Card>
+          {foodItems?.slice(0, 6).map((item) => (
+            <Card key={item._id} item={item}></Card>
           ))}
         </div>
         <div className="mt-10 flex justify-center items-center ">

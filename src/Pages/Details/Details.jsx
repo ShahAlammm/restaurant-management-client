@@ -1,18 +1,24 @@
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useState } from "react";
 import CardDetails from "../../Components/CardDetails/CardDetails";
+import { useParams } from "react-router-dom";
+
+
+
 
 const Details = () => {
   const [details, setDetails] = useState([]);
-//   const [elements, setElement] = useState([]);
 
-  useEffect(() => {
-    axios.get(`http://localhost:7000/foods`).then(res=>{
-        setDetails(res.data)
-    });
-    // const findItem = elements?.find((details) => details.id == id);
-    // setDetails(findItem);
-  }, []);
+  const { id } = useParams();
+
+useEffect(() => {
+    fetch(`http://localhost:7000/foods/${id}`)
+      .then((response) => response.json())
+      .then((data) => setDetails(data))
+      .catch((error) => console.error("Error fetching food details:", error));
+  }, [id]);
+
+console.log(details)
   return (
     <div className="container m-auto">
       <CardDetails details={details}></CardDetails>

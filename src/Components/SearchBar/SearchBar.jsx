@@ -1,27 +1,21 @@
 // import { useState } from "react";
 
-const SearchBar = () => {
-  // const [searchTerm, setSearchTerm] = useState('');
-
-  // const handleInputChange = (event) => {
-  //   setSearchTerm(event.target.value);
-  // };
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   // Add your search logic here, for example, fetching data based on the searchTerm
-  //   console.log('Searching for:', searchTerm);
-  // };
+const SearchBar = ({ onSearch }) => {
+  const handleChange = (e) => {
+    const searchItem = e.target.value;
+    onSearch(searchItem);
+  };
   return (
     <div className="flex justify-end">
       <div className="form-control">
         <div className="input-group">
           <input
             type="text"
-            placeholder="Search…"
+            placeholder="Search..."
+            onChange={handleChange}
             className="input input-bordered lg:w-96"
           />
-          <button className="btn btn-square w-28 bg-orange-500">
+          <button  className="btn btn-square w-28 bg-orange-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
