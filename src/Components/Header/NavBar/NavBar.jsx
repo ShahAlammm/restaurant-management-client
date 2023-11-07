@@ -177,19 +177,25 @@ const NavBar = () => {
               </ul>
             </div>
           ) : (
-            <details className="dropdown">
-              <summary className="m-1 btn btn-ghost text-4xl">
-                <FaUserCircle></FaUserCircle>
-              </summary>
-              <ul className="p-2 mt-2 menu dropdown-content z-[1] font-bold w-52">
+            <div className="dropdown dropdown-hover">
+              <label tabIndex={0} className="btn btn-ghost m-1">
+                <FaUserCircle className="w-10 h-10"></FaUserCircle>
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] font-bold text-orange-500 menu p-2 shadow bg-base-100 rounded-box w-56"
+              >
                 <li>
-                  <p>{user?.displayName}</p>
+                  <Link to="myFood"> My Added Food Items</Link>
                 </li>
                 <li>
-                  <p>{user?.email}</p>
+                  <Link to="addFood">Add a Food Item</Link>
+                </li>
+                <li>
+                  <Link to="myOrder">My Ordered Food Items</Link>
                 </li>
               </ul>
-            </details>
+            </div>
           )}
         </div>
         {user ? (
@@ -208,7 +214,7 @@ const NavBar = () => {
             LogIn
           </Link>
         )}
-        <div className="form-control">
+        <div className="form-control ml-3">
           <label className="label cursor-pointer p-0 m-0">
             <input type="checkbox" className="toggle" onChange={handleToggle} />
           </label>
