@@ -1,9 +1,10 @@
 import axios from "axios";
+import { useContext } from "react";
 import Swal from "sweetalert2";
 
 const AddFood = () => {
+const {user} =useContext()
 
-  
   const handleAddProduct = (e) => {
     e.preventDefault();
 
@@ -24,6 +25,7 @@ const AddFood = () => {
       FoodDetails,
       FoodImage,
       Quantity,
+      user,
     };
 
     axios
