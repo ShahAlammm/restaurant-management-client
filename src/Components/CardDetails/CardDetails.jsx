@@ -5,6 +5,8 @@ import { AuthContext } from "../../Hook/AuthProvider";
 
 const CardDetails = ({ details }) => {
   const { user } = useContext(AuthContext);
+
+
   const {
     _id,
     FoodName,

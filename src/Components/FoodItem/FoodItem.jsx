@@ -5,7 +5,7 @@ const FoodItem = ({ food }) => {
   const { _id, FoodName, FoodImage, FoodCategory, Price } =
     food || {};
   return (
-    <div className="hero bg-base-200 rounded-xl shadow-lg h-72 shadow-cyan-400">
+    <div className="hero bg-base-200 rounded-xl shadow-lg  shadow-cyan-400">
       <div className="hero-content flex-col lg:flex-row">
         <img src={FoodImage} className="max-w-sm rounded-lg shadow-2xl" />
         <div>

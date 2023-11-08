@@ -1,48 +1,27 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
     {
-      image: "https://i.ibb.co/qrkR22S/appp.webp",
-      title: "Slide 1 Title",
-      description:
-        "Short description for Slide 1.Short description for Slide 2.Short description for Slide 2.",
-      buttonText: "View All",
-      link: "/all-page",
+      image: "https://i.ibb.co/MpNsks9/bann-7.jpg",
     },
     {
-      image: "https://i.ibb.co/qrkR22S/appp.webp",
-      title: "Slide 2 Title",
-      description:
-        "Short description for Slide 2.Short description for Slide 2.Short description for Slide 2.",
-      buttonText: "View All",
-      link: "/all-page",
+      image: "https://i.ibb.co/yh00MVW/bann-3.jpg",
     },
     {
-      image: "https://i.ibb.co/qrkR22S/appp.webp",
-      title: "Slide 2 Title",
-      description:
-        "Short description for Slide 2.Short description for Slide 2.Short description for Slide 2.",
-      buttonText: "View All",
-      link: "/all-page",
+      image: "https://i.ibb.co/WkyXv6k/bann-4.jpg",
     },
     {
-      image: "https://i.ibb.co/qrkR22S/appp.webp",
-      title: "Slide 2 Title",
-      description:
-        "Short description for Slide 2.Short description for Slide 2.Short description for Slide 2.Short description for Slide 2.",
-      buttonText: "View All",
-      link: "/all-page",
+      image: "https://i.ibb.co/Rg9DQrG/bann-2.jpg",
     },
     {
-      image: "https://i.ibb.co/qrkR22S/appp.webp",
-      title: "Slide 2 Title",
-      description:
-        "Short description for Slide 2.Short description for Slide 2.Short description for Slide 2.",
-      buttonText: "View All",
-      link: "/all-page",
+      image: "https://i.ibb.co/hd0QkQq/bann-6.webp",
+    },
+    {
+      image: "https://i.ibb.co/q1ngXm8/bann-1.webp",
     },
     // Add more slides with title, description, and link as needed
   ];
@@ -81,8 +60,8 @@ const Slider = () => {
                 left: 0,
                 width: "100%",
                 height: "100%",
-                background:
-                  "linear-gradient(to right, #151515, rgba(21, 21, 21, 0))",
+                // background:
+                //   "linear-gradient(to right, #151515, rgba(1, 1, 1, 0))",
                 zIndex: 0,
                 pointerEvents: "none",
               }}
@@ -109,9 +88,11 @@ const Slider = () => {
                 </p>
               </div>
               <div className="relative sm:mt-44 lg:mt-48 xl:mt-96">
-                <button className="btn bg-orange-500 text-white w-16 sm:w-28 ml-80 sm:ml-[600px] 2xl:ml-[1600px]  2xl:mt-80 xl:ml-[1200px] lg:ml-[780px]">
-                  {slide.buttonText}
-                </button>
+                <Link to={'/allItems'}>
+                  <button className="btn bg-orange-500 text-white w-16 sm:w-28 ml-80 sm:ml-[600px] 2xl:ml-[1600px]  2xl:mt-80 xl:ml-[1200px] lg:ml-[780px]">view all
+                    {slide.buttonText}
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
