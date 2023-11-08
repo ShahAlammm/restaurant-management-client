@@ -11,9 +11,11 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const [foodItems, setFoodItems] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:7000/foods").then((res) => {
-      setFoodItems(res.data);
-    });
+    axios
+      .get("https://restaurant-management-server-ochre.vercel.app/foods")
+      .then((res) => {
+        setFoodItems(res.data);
+      });
   }, []);
   return (
     <div>
@@ -35,9 +37,11 @@ const Home = () => {
           ))}
         </div>
         <div className="mt-10 flex justify-center items-center ">
-          <Link to='/allItems'><button className="btn bg-orange-500 hover:bg-blue-500 text-white">
-            See all
-          </button></Link>
+          <Link to="/allItems">
+            <button className="btn bg-orange-500 hover:bg-blue-500 text-white">
+              See all
+            </button>
+          </Link>
         </div>
         <div className="mt-10">
           <Cooker></Cooker>

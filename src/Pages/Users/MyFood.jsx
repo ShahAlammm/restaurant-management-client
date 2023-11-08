@@ -8,9 +8,11 @@ const MyFood = () => {
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/userAdd`).then((res) => {
-      setOrder(res.data);
-    });
+    axios
+      .get(`https://restaurant-management-server-ochre.vercel.app/userAdd`)
+      .then((res) => {
+        setOrder(res.data);
+      });
   }, [user?.email]);
   return (
     <div className="container m-auto">

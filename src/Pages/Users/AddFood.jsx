@@ -24,7 +24,11 @@ const AddFood = () => {
       Quantity,
     };
 
-    axios.post(`http://localhost:7000/userAdd`,newProduct)
+    axios
+      .post(
+        `https://restaurant-management-server-ochre.vercel.app/userAdd`,
+        newProduct
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

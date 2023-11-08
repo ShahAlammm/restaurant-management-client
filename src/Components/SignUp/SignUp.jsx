@@ -39,7 +39,7 @@ const SignUp = () => {
           swal("Good job!", "Log In successfully!", "success");
           navigate("/");
 
-          // axios.post("http://localhost:7000/jwt", users).then((res) => {
+          // axios.post("https://restaurant-management-server-ochre.vercel.app/jwt", users).then((res) => {
           //   console.log(res.data);
           // });
         })
@@ -82,19 +82,26 @@ const SignUp = () => {
   };
   return (
     <div>
-      <div className="text-center text-2xl text-red-600 p-2"><p>{error}</p></div>
+      <div className="text-center text-2xl text-red-600 p-2">
+        <p>{error}</p>
+      </div>
       <div>
         <div className="flex justify-center items-center mb-10  mt-10 lg:mt-20">
           <div className="rounded-lg bg-gradient-to-b from-orange-600 via-orange-400 to-orange-600">
             <div className="mains">
-              <input className="inputs" type="checkbox" id="chk" aria-hidden="true" />
+              <input
+                className="inputs"
+                type="checkbox"
+                id="chk"
+                aria-hidden="true"
+              />
               <div className="signup">
                 <form onSubmit={handleRegister}>
                   <label className="labels" htmlFor="chk" aria-hidden="true">
                     Sign up
                   </label>
                   <input
-                  className="inputs"
+                    className="inputs"
                     type="text"
                     onChange={(e) => setName(e.target.value)}
                     value={displayName}
@@ -103,7 +110,7 @@ const SignUp = () => {
                     required
                   />
                   <input
-                  className="inputs"
+                    className="inputs"
                     type="text"
                     onChange={(e) => setImage(e.target.value)}
                     value={photoURL}
@@ -111,7 +118,7 @@ const SignUp = () => {
                     placeholder="Image Url"
                   />
                   <input
-                  className="inputs"
+                    className="inputs"
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
@@ -120,7 +127,7 @@ const SignUp = () => {
                     required
                   />
                   <input
-                  className="inputs"
+                    className="inputs"
                     type="password"
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
@@ -137,7 +144,7 @@ const SignUp = () => {
                     Login
                   </label>
                   <input
-                  className="inputs"
+                    className="inputs"
                     type="email"
                     name="email"
                     onChange={(e) => setEmail(e.target.value)}
@@ -146,7 +153,7 @@ const SignUp = () => {
                     required
                   />
                   <input
-                  className="inputs"
+                    className="inputs"
                     type="password"
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}

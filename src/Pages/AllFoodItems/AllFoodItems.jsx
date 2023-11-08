@@ -9,9 +9,11 @@ const AllFoodItems = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/foods`).then((res) => {
-      setFoodItem(res.data);
-    });
+    axios
+      .get(`https://restaurant-management-server-ochre.vercel.app/foods`)
+      .then((res) => {
+        setFoodItem(res.data);
+      });
   }, []);
 
   const filteredFoodItems = foodItem.filter((food) =>

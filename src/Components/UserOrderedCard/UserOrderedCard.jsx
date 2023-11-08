@@ -21,7 +21,9 @@ const UserOrderedCard = ({ item, setOrder, order }) => {
         console.log("User confirmed deletion");
 
         axios
-          .delete(`http://localhost:7000/order/${_id}`)
+          .delete(
+            `https://restaurant-management-server-ochre.vercel.app/order/${_id}`
+          )
           .then((response) => {
             const data = response.data;
             console.log("Delete API response:", data);

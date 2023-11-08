@@ -4,14 +4,16 @@ import UserOrderedCard from "../../Components/UserOrderedCard/UserOrderedCard";
 import { AuthContext } from "../../Hook/AuthProvider";
 
 const MyOrder = () => {
-  const {user} =useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
     // Make a request to get orders based on the user's email
-    axios.get(`http://localhost:7000/order`).then((res) => {
-      setOrder(res.data);
-    });
+    axios
+      .get(`https://restaurant-management-server-ochre.vercel.app/order`)
+      .then((res) => {
+        setOrder(res.data);
+      });
   }, [user?.email]);
   return (
     <div className="container m-auto">

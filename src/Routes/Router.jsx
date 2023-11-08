@@ -16,39 +16,42 @@ const Router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     errorElement: <Error></Error>,
     children: [
-        {
-            index:'/',
-            element:<Home></Home>
-        },
-        {
-            path:'signup',
-            element:<SignUp></SignUp>
-        },
-        {
-          path:"allItems",
-          element: <AllFoodItems></AllFoodItems>,
-        },
-        {
-          path:"foods/:id",
-          element:<Details></Details>,
-          loader: ({params})=>fetch(`http://localhost:7000/foods/${params.id}`)
-        },
-        {
-          path:"newPage",
-          element:<NewPage></NewPage>
-        },
-        {
-          path:"myFood",
-          element:<MyFood></MyFood>
-        },
-        {
-          path:"addFood",
-          element:<AddFood></AddFood>
-        },
-        {
-          path:"myOrder",
-          element:<MyOrder></MyOrder>
-        }
+      {
+        index: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "signup",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "allItems",
+        element: <AllFoodItems></AllFoodItems>,
+      },
+      {
+        path: "foods/:id",
+        element: <Details></Details>,
+        loader: ({ params }) =>
+          fetch(
+            `https://restaurant-management-server-ochre.vercel.app/foods/${params.id}`
+          ),
+      },
+      {
+        path: "newPage",
+        element: <NewPage></NewPage>,
+      },
+      {
+        path: "myFood",
+        element: <MyFood></MyFood>,
+      },
+      {
+        path: "addFood",
+        element: <AddFood></AddFood>,
+      },
+      {
+        path: "myOrder",
+        element: <MyOrder></MyOrder>,
+      },
     ],
   },
 ]);
