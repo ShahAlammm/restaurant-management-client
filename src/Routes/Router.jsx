@@ -9,6 +9,7 @@ import NewPage from "../Pages/NewPage/NewPage";
 import MyFood from "../Pages/Users/MyFood";
 import AddFood from "../Pages/Users/AddFood";
 import MyOrder from "../Pages/Users/MyOrder";
+import PrivateRoute from "../Hook/PrivateRoute";
 
 const Router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const Router = createBrowserRouter([
     errorElement: <Error></Error>,
     children: [
       {
-        index: "/",
+        path: "/",
         element: <Home></Home>,
       },
       {
@@ -30,7 +31,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "foods/:id",
-        element: <Details></Details>,
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://restaurant-management-server-ochre.vercel.app/foods/${params.id}`
@@ -42,15 +47,27 @@ const Router = createBrowserRouter([
       },
       {
         path: "myFood",
-        element: <MyFood></MyFood>,
+        element: (
+          <PrivateRoute>
+            <MyFood></MyFood>
+          </PrivateRoute>
+        ),
       },
       {
         path: "addFood",
-        element: <AddFood></AddFood>,
+        element: (
+          <PrivateRoute>
+            <AddFood></AddFood>
+          </PrivateRoute>
+        ),
       },
       {
         path: "myOrder",
-        element: <MyOrder></MyOrder>,
+        element: (
+          <PrivateRoute>
+            <MyOrder></MyOrder>
+          </PrivateRoute>
+        ),
       },
     ],
   },

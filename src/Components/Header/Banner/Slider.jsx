@@ -87,7 +87,7 @@ const Slider = () => {
                   {slide.description}
                 </p>
               </div>
-              <div className="relative sm:mt-44 lg:mt-48 xl:mt-96">
+              <div className="relative mt-44 sm:mt-44 lg:mt-48 xl:mt-96">
                 <Link to={'/allItems'}>
                   <button className="btn bg-orange-500 text-white w-16 sm:w-28 ml-80 sm:ml-[600px] 2xl:ml-[1600px]  2xl:mt-80 xl:ml-[1200px] lg:ml-[780px]">view all
                     {slide.buttonText}

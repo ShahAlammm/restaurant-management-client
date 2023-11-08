@@ -4,6 +4,7 @@ import { AuthContext } from "../../Hook/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const SignUp = () => {
   const { googleSignIn, signIn, signUp } = useContext(AuthContext);
@@ -31,6 +32,7 @@ const SignUp = () => {
     if (email && password) {
       signIn(email, password)
         .then((result) => {
+          console.log(result.user);
           // const loggedInUser = result.user;
           const users = { email };
           setEmail("");
@@ -39,9 +41,14 @@ const SignUp = () => {
           swal("Good job!", "Log In successfully!", "success");
           navigate("/");
 
-          // axios.post("https://restaurant-management-server-ochre.vercel.app/jwt", users).then((res) => {
-          //   console.log(res.data);
-          // });
+          axios
+            .post(
+              "https://restaurant-management-server-ochre.vercel.app/jwt",
+              users
+            )
+            .then((res) => {
+              console.log(res.data);
+            });
         })
         .catch((err) => {
           setError(err.massage);
@@ -63,17 +70,15 @@ const SignUp = () => {
     } else {
       setError("");
 
-      signUp(email, password, displayName, photoURL);
-      console
-        .log(email, password, displayName, photoURL)
+      signUp(email, password, displayName, photoURL)
         .then((result) => {
           console.log(result.user);
           setEmail("");
           setPassword("");
           setName("");
           setImage("");
-          Swal("Good job!", "Register successfully!", "success");
           navigate("/");
+          swal("Good job!", "Register successfully!", "success");
         })
         .catch((err) => {
           console.log(err);
