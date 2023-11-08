@@ -10,6 +10,7 @@ import MyFood from "../Pages/Users/MyFood";
 import AddFood from "../Pages/Users/AddFood";
 import MyOrder from "../Pages/Users/MyOrder";
 import PrivateRoute from "../Hook/PrivateRoute";
+import Blog from "../Pages/Blog/Blog";
 
 const Router = createBrowserRouter([
   {
@@ -66,6 +67,14 @@ const Router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyOrder></MyOrder>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "blog",
+        element: (
+          <PrivateRoute>
+            <Blog></Blog>
           </PrivateRoute>
         ),
       },
