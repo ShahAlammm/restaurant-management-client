@@ -11,6 +11,7 @@ import AddFood from "../Pages/Users/AddFood";
 import MyOrder from "../Pages/Users/MyOrder";
 import PrivateRoute from "../Hook/PrivateRoute";
 import Blog from "../Pages/Blog/Blog";
+import UpdateFood from "../Components/UpdateFood/UpdateFood";
 
 const Router = createBrowserRouter([
   {
@@ -61,6 +62,15 @@ const Router = createBrowserRouter([
             <AddFood></AddFood>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "update",
+        element: (
+          <PrivateRoute>
+            <UpdateFood></UpdateFood>
+          </PrivateRoute>
+        ),
+        loader:({ params })=>fetch(`https://restaurant-management-server-ochre.vercel.app/userAdd/${params.id}`)
       },
       {
         path: "myOrder",

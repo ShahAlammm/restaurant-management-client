@@ -1,10 +1,20 @@
-import axios from "axios";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddFood = () => {
+const UpdateFood = () => {
+  const userAdd = useLoaderData();
 
-  
-  const handleAddProduct = (e) => {
+  const {
+    FoodName,
+    FoodCategory,
+    FoodOrigin,
+    Price,
+    FoodDetails,
+    FoodImage,
+    Quantity,
+  } = userAdd || {};
+
+  const handleUpdate = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -16,7 +26,7 @@ const AddFood = () => {
     const FoodDetails = form.FoodDetails.value;
     const Quantity = form.Quantity.value;
 
-    const newProduct = {
+    const updateFood = {
       FoodName,
       FoodCategory,
       FoodOrigin,
@@ -26,31 +36,36 @@ const AddFood = () => {
       Quantity,
     };
 
-    axios
-      .post(
-        `https://restaurant-management-server-ochre.vercel.app/userAdd`,
-        newProduct
-      )
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.insertedId) {
+    fetch(
+      `https://restaurant-management-server-ochre.vercel.app/userAdd/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateFood),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "Product Added Successfully",
+            text: "Product Updated Successfully",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "OK",
           });
           form.reset();
         }
       });
   };
-
   return (
     <div className="bg-base-200 p-24 lg:px-40  font-bold font-serif ">
       <h2 className="text-3xl font-extrabold text-orange-500 text-center">
         Add A Food Item
       </h2>
-      <form onSubmit={handleAddProduct}>
+      <form onSubmit={handleUpdate}>
         <div className="mb-8">
           <div className="form-control w-full">
             <label className="label">
@@ -60,6 +75,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="FoodImage"
+                defaultValue={FoodImage}
                 placeholder="Food Image URL only"
                 className="input input-bordered input-primary w-full"
                 required
@@ -77,6 +93,7 @@ const AddFood = () => {
                 type="text"
                 name="FoodName"
                 placeholder="Food Name"
+                defaultValue={FoodName}
                 className="input input-bordered input-primary w-full"
                 required
               />
@@ -90,6 +107,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="FoodCategory"
+                defaultValue={FoodCategory}
                 placeholder="Food Category"
                 className="input input-bordered input-primary w-full"
                 required
@@ -108,6 +126,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="FoodOrigin"
+                defaultValue={FoodOrigin}
                 required
                 placeholder="Country"
                 className="input input-bordered input-primary w-full"
@@ -122,6 +141,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="Price"
+                defaultValue={Price}
                 required
                 placeholder="Food Price"
                 className="input input-bordered input-primary w-full"
@@ -140,6 +160,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="FoodDetails"
+                defaultValue={FoodDetails}
                 required
                 placeholder="Short Details"
                 className="textarea textarea-primary w-full"
@@ -155,6 +176,7 @@ const AddFood = () => {
                 className="input input-bordered input-primary w-4/12 h-10 text-xl"
                 type="number"
                 name="Quantity"
+                defaultValue={Quantity}
                 required
                 max={20}
                 min={0}
@@ -171,4 +193,5 @@ const AddFood = () => {
     </div>
   );
 };
-export default AddFood;
+
+export default UpdateFood;

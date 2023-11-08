@@ -1,4 +1,6 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UserAddedCard = ({ item, order, setOrder }) => {
   const { _id, FoodName, FoodImage, FoodCategory, Price } = item || {};
@@ -59,6 +61,7 @@ const UserAddedCard = ({ item, order, setOrder }) => {
               details
             </button>
           </Link>
+          <Link to={`/update`}><button className="btn btn-primary">update</button></Link>
           <button
             onClick={() => handleDelete(_id)}
             className="btn 2xl:ml-28  md:ml-10 ml-12 bg-red-500 hover:bg-green-400 text-white mt-2"
