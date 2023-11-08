@@ -1,3 +1,8 @@
+import img1 from'../../../public/icon image/download (1).jpg'
+import img2 from'../../../public/icon image/download (2).jpg'
+import img3 from'../../../public/icon image/images (3).jpg'
+import img4 from'../../../public/icon image/images (4).jpg'
+
 const TeamMember = ({ name, role, imageSrc }) => (
 
 
@@ -71,22 +76,22 @@ const Team = () => {
             <TeamMember
               name="Holden Caulfield"
               role="UI Developer"
-              imageSrc="https://i.ibb.co/qrkR22S/appp.webp"
+              imageSrc={img1}
             />
             <TeamMember
               name="Alper Kamu"
               role="Designer"
-              imageSrc="https://i.ibb.co/qrkR22S/appp.webp"
+              imageSrc={img2}
             />
             <TeamMember
               name="Atticus Finch"
               role="UI Developer"
-              imageSrc="https://i.ibb.co/qrkR22S/appp.webp"
+              imageSrc={img3}
             />
             <TeamMember
               name="Henry Letham"
               role="Designer"
-              imageSrc="https://i.ibb.co/qrkR22S/appp.webp"
+              imageSrc={img4}
             />
           </div>
         </div>
