@@ -17,8 +17,6 @@ useEffect(() => {
       .then((data) => setDetails(data))
       .catch((error) => console.error("Error fetching food details:", error));
   }, [id]);
-
-console.log(details)
   return (
     <div className="container m-auto">
       <CardDetails details={details}></CardDetails>

@@ -1,20 +1,47 @@
 import axios from "axios";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const UserOrderedCard = ({ item, setOrderItem }) => {
+const UserOrderedCard = ({ item, setOrder, order }) => {
   const { _id, FoodName, FoodImage, FoodCategory, Price } = item || {};
 
+  const handleDelete = (_id) => {
+    console.log("Deleting item with ID:", _id);
 
-  const handleRemove = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log("User confirmed deletion");
 
+        axios
+          .delete(`http://localhost:7000/order/${_id}`)
+          .then((response) => {
+            const data = response.data;
+            console.log("Delete API response:", data);
 
-      axios.delete(`http://localhost:7000/order/${_id}`).then((res) => {
-      setOrderItem(res.data);
-      });
-      console.log(_id)
-}
+            if (data.deletedCount > 0) {
+              console.log("Item successfully deleted");
+              Swal.fire("Deleted!", "Your Coffee has been deleted.", "success");
 
+              // Update the state after successful deletion
+              const remaining = order.filter((items) => items._id !== _id);
+              console.log("Updated Order State:", remaining);
+              setOrder(remaining);
+            }
+          })
+          .catch((error) => {
+            console.error("Error during deletion:", error);
+          });
+      }
+    });
+  };
 
   return (
     <div className="hero bg-base-200 rounded-xl shadow-lg shadow-cyan-400">
@@ -33,7 +60,12 @@ const UserOrderedCard = ({ item, setOrderItem }) => {
               details
             </button>
           </Link>
-          <button onClick={()=>handleRemove(_id)} className="btn 2xl:ml-28  md:ml-10 ml-12 bg-red-500 hover:bg-green-400 text-white mt-2">X</button>
+          <button
+            onClick={() => handleDelete(_id)}
+            className="btn 2xl:ml-28  md:ml-10 ml-12 bg-red-500 hover:bg-green-400 text-white mt-2"
+          >
+            X
+          </button>
         </div>
       </div>
     </div>

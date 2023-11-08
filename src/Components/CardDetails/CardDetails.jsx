@@ -1,8 +1,10 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext } from "react";
 import swal from "sweetalert";
+import { AuthContext } from "../../Hook/AuthProvider";
 
 const CardDetails = ({ details }) => {
+  const { user } = useContext(AuthContext);
   const {
     _id,
     FoodName,
@@ -13,20 +15,21 @@ const CardDetails = ({ details }) => {
     Quantity,
   } = details || {};
 
-
   const handleOrder = () => {
     if (Quantity > 0) {
       swal("Good job!", `Order placed for ${FoodName}!`, "success");
-      axios.post(`http://localhost:7000/order`, user).then((res) => {
+      axios.post(`http://localhost:7000/order`, users).then((res) => {
         console.log(res.data);
       });
     } else {
       swal("Opps !", "This item is currently out of stock.", "error");
-
     }
   };
-  const user = {
+
+
+  const users = {
     _id,
+    user,
     FoodName,
     FoodImage,
     FoodCategory,
