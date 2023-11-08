@@ -70,7 +70,7 @@ const Router = createBrowserRouter([
             <UpdateFood></UpdateFood>
           </PrivateRoute>
         ),
-        loader:({ params })=>fetch(`https://restaurant-management-server-ochre.vercel.app/userAdd/${params.id}`)
+        loader:({ params })=>fetch(`https://restaurant-management-server-ochre.vercel.app/userAdd/${params._id}`)
       },
       {
         path: "myOrder",

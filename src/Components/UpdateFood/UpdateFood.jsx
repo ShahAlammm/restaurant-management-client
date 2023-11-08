@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 const UpdateFood = () => {
   const userAdd = useLoaderData();
-
+console.log(userAdd)
   const {
     FoodName,
     FoodCategory,
