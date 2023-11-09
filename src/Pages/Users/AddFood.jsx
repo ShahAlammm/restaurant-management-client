@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Hook/AuthProvider";
 
 const AddFood = () => {
-const {user} =useContext()
+const {user} =useContext(AuthContext)
 
   const handleAddProduct = (e) => {
     e.preventDefault();

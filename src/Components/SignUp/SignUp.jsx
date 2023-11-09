@@ -20,7 +20,7 @@ const SignUp = () => {
   // Google
   const handleGoogle = () => {
     googleSignIn().then((result) => {
-      console.log(result.user);
+     
       swal("Good job!", "Log In successfully!", "success");
       navigate("/");
     });

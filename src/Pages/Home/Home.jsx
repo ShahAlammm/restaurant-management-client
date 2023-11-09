@@ -10,11 +10,17 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [foodItems, setFoodItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
       .get("https://restaurant-management-server-ochre.vercel.app/foods")
       .then((res) => {
         setFoodItems(res.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching food items:", error);
+        setLoading(false);
       });
   }, []);
   return (
@@ -31,24 +37,32 @@ const Home = () => {
             capital. <br /> dpropriately benchmark networks.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 xl:grid-cols-3">
-          {foodItems?.slice(0, 6).map((item) => (
-            <Card key={item._id} item={item}></Card>
-          ))}
-        </div>
-        <div className="mt-10 flex justify-center items-center ">
-          <Link to="/allItems">
-            <button className="btn bg-orange-500 hover:bg-blue-500 text-white">
-              See all
-            </button>
-          </Link>
-        </div>
-        <div className="mt-10">
-          <Cooker></Cooker>
-          <Review></Review>
-          <Team></Team>
-          <PublicReview></PublicReview>
-        </div>
+        {loading ? (
+          <p className="text-center mt-5">
+            <span className="loading loading-spinner loading-lg"></span>
+          </p>
+        ) : (
+          <>
+            <div className="grid md:grid-cols-2 xl:grid-cols-3">
+              {foodItems?.slice(0, 6).map((item) => (
+                <Card key={item._id} item={item}></Card>
+              ))}
+            </div>
+            <div className="mt-10 flex justify-center items-center ">
+              <Link to="/allItems">
+                <button className="btn bg-orange-500 hover:bg-blue-500 text-white">
+                  See all
+                </button>
+              </Link>
+            </div>
+            <div className="mt-10">
+              <Cooker></Cooker>
+              <Review></Review>
+              <Team></Team>
+              <PublicReview></PublicReview>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

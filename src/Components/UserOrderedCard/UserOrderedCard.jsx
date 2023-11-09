@@ -1,13 +1,12 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const UserOrderedCard = ({ item, setOrder, order }) => {
   const { _id, FoodName, FoodImage, FoodCategory, Price } = item || {};
 
-  const handleDelete = (_id) => {
+  const handleDelete = async (_id) => {
     console.log("Deleting item with ID:", _id);
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -16,31 +15,33 @@ const UserOrderedCard = ({ item, setOrder, order }) => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         console.log("User confirmed deletion");
 
-        axios
-          .delete(
+        try {
+          const response = await axios.delete(
             `https://restaurant-management-server-ochre.vercel.app/order/${_id}`
-          )
-          .then((response) => {
-            const data = response.data;
-            console.log("Delete API response:", data);
+          );
 
-            if (data.deletedCount > 0) {
-              console.log("Item successfully deleted");
-              Swal.fire("Deleted!", "Your Coffee has been deleted.", "success");
+          if (response.status === 200) {
+            console.log("Item successfully deleted");
+            Swal.fire("Deleted!", "Your Coffee has been deleted.", "success");
 
-              // Update the state after successful deletion
-              const remaining = order.filter((items) => items._id !== _id);
-              console.log("Updated Order State:", remaining);
-              setOrder(remaining);
-            }
-          })
-          .catch((error) => {
-            console.error("Error during deletion:", error);
-          });
+            // Update the state after successful deletion
+            const remaining = order.filter((items) => items._id !== _id);
+            console.log("Updated Order State:", remaining);
+            setOrder(remaining);
+          } else {
+            console.log("Item not found");
+            Swal.fire("Error", "Item not found.", "error");
+          }
+        } catch (error) {
+          console.error("Error during deletion:", error);
+          Swal.fire("Error", "An error occurred during deletion.", "error");
+        }
+      } else {
+        console.log("User canceled deletion");
       }
     });
   };
@@ -48,7 +49,7 @@ const UserOrderedCard = ({ item, setOrder, order }) => {
   return (
     <div className="hero bg-base-200 rounded-xl shadow-lg shadow-cyan-400">
       <div className="hero-content flex-col lg:flex-row">
-        <img src={FoodImage} className="max-w-sm rounded-lg shadow-2xl" />
+        <img src={FoodImage} className="max-w-sm rounded-lg shadow-2xl" alt={FoodName} />
         <div>
           <h1 className="text-2xl font-bold font-serif text-orange-500 italic">
             {FoodName}
